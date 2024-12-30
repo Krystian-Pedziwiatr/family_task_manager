@@ -3,7 +3,7 @@ from collections import deque
 # Kolejka zadań (FCFS - First Come First Served)
 tasks = deque()
 
-# Domyślne zadania obowiązkowe
+# Domyślne zadania przypisane na stałe
 default_tasks = [
     {"task": "Sprzątanie kuchni", "duration": 30},
     {"task": "Odkurzanie salonu", "duration": 20},
@@ -25,7 +25,6 @@ def add_task(task_name, task_duration):
     tasks.append({"task": task_name, "duration": int(task_duration)})
 
 def assign_tasks(family_members, preferences):
-  
 
     if not family_members:
         raise ValueError("Brak członków rodziny do przypisania zadań!")
@@ -40,13 +39,13 @@ def assign_tasks(family_members, preferences):
         current_task = task_queue.popleft()  # Pobieramy zadanie z początku kolejki
         member = family_members[member_idx]  # Bierzemy kolejnego członka rodziny
         
-        # Sprawdzamy preferencje danego członka
+        # Sprawdzamy preferencje danej osoby
         if current_task["task"] in preferences[member]["dislikes"]:
-            # Jeśli członek nie lubi zadania, przekazujemy je dalej
+            # Jeśli nie lubi zadania, przekazujemy je dalej
             assignments.append(f"{member} -> {current_task['task']} (nie lubi), przekazywane dalej")
             task_queue.append(current_task)  # Przekazujemy zadanie na koniec kolejki
         else:
-            # Jeśli członek lubi zadanie, przypisujemy je temu członkowi
+            # Jeśli lubi zadanie, przypisujemy je temu członkowi
             assignments.append(f"{member} -> {current_task['task']} ({current_task['duration']} min)")
 
         # Przechodzimy do następnego członka rodziny

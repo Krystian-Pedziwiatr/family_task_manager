@@ -21,11 +21,11 @@ def add_task_to_queue():
 # Funkcja przypisująca zadania
 def assign_family_tasks():
     assignments_listbox.delete(0, tk.END)
-    # Używamy funkcji assign_tasks z task_manager.py do przypisania zadań
+    # Użycie funkcji assign_tasks z task_manager.py do przypisania zadań
     assignments = assign_tasks(family_members, preferences)
     for assignment in assignments:
         assignments_listbox.insert(tk.END, assignment)
-    update_tasks_list()  # Aktualizujemy listę zadań po przypisaniu
+    update_tasks_list()  # Aktualizacja listy zadań po przypisaniu
 
 # Funkcja aktualizująca listę zadań
 def update_tasks_list():
@@ -43,7 +43,7 @@ def update_family_preferences():
         messagebox.showerror("Błąd", "Podaj imię członka rodziny!")
         return
 
-    # Używamy funkcji update_preferences z task_manager.py do zaktualizowania preferencji
+    # funkcja update_preferences z task_manager.py do zaktualizowania preferencji
     update_preferences(member, likes, dislikes)
     messagebox.showinfo("Sukces", f"Preferencje dla {member} zostały zaktualizowane!")
     update_preferences_list()
@@ -96,7 +96,7 @@ root.title("Zarządzanie zadaniami domowymi")
 frame = tk.Frame(root)
 frame.pack(padx=10, pady=10)
 
-# Dodanie zadania
+# Dodawanie zadania
 tk.Label(frame, text="Nazwa zadania:").grid(row=0, column=0, padx=5, pady=5)
 task_name_entry = tk.Entry(frame)
 task_name_entry.grid(row=0, column=1, padx=5, pady=5)
@@ -111,9 +111,11 @@ add_task_button.grid(row=2, column=0, columnspan=2, pady=5)
 tasks_listbox = tk.Listbox(frame, height=10)
 tasks_listbox.grid(row=3, column=0, columnspan=2, sticky="nsew", padx=5, pady=5)
 
+# przycisk przydzielania zadania 
 assign_tasks_button = tk.Button(frame, text="Przydziel zadania", command=assign_family_tasks)
 assign_tasks_button.grid(row=4, column=0, columnspan=2, pady=5)
 
+# przydzielone zadania
 assignments_listbox = tk.Listbox(frame, height=10)
 assignments_listbox.grid(row=5, column=0, columnspan=2, sticky="nsew", padx=5, pady=5)
 
@@ -139,7 +141,7 @@ update_preferences_button.grid(row=3, column=0, columnspan=2, pady=5)
 preferences_listbox = tk.Listbox(preferences_frame, height=5)
 preferences_listbox.grid(row=4, column=0, columnspan=2, sticky="nsew", padx=5, pady=5)
 
-# Dodawanie członków rodziny
+# Dodawanie / usuwanie członków rodziny
 family_members_frame = tk.LabelFrame(root, text="Członkowie rodziny")
 family_members_frame.pack(fill="x", padx=10, pady=5)
 
@@ -152,6 +154,7 @@ add_family_member_button.grid(row=1, column=0, pady=5)
 remove_family_member_button = tk.Button(family_members_frame, text="Usuń członka rodziny", command=remove_family_member_from_list)
 remove_family_member_button.grid(row=1, column=2, pady=5)
 
+# wywołanie list przy starcie aplikacji 
 update_tasks_list()
 update_preferences_list()
 
