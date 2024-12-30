@@ -44,4 +44,4 @@ def update_preferences(name, likes=None, dislikes=None):
 
 def get_preferences():
    
-    return preferences  # Zwracamy słownik preferencji
+    return preferences  # Zwraca słownik preferencji
