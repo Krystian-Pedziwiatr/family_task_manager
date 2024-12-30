@@ -152,8 +152,6 @@ add_family_member_button.grid(row=1, column=0, pady=5)
 remove_family_member_button = tk.Button(family_members_frame, text="Usuń członka rodziny", command=remove_family_member_from_list)
 remove_family_member_button.grid(row=1, column=2, pady=5)
 
-
-# Wyświetlanie domyślnych danych
 update_tasks_list()
 update_preferences_list()
 
